@@ -41,7 +41,7 @@ async function submitHandle(event) {
     return;
   }
 
-  hideEndOfCollectionMessage();
+  // hideEndOfCollectionMessage();
 
   showLoader();
 
@@ -66,9 +66,15 @@ async function submitHandle(event) {
       showLoadMoreBtn();
     }
     if (perPage * pageCounter >= totalHits) {
+      iziToast.success({
+        title: 'Success',
+        color: 'green',
+        message: `We're sorry, but you've reached the end of search results.`,
+        position: 'topRight',
+      });
       hideLoadMoreBtn();
-      showEndOfCollectionMessage();
-    }
+      // showEndOfCollectionMessage();
+    } else {showLoadMoreBtn()}
   } catch (error) {
     // console.error('Error fetching images:', error);
     iziToast.error({
@@ -92,9 +98,15 @@ loadMoreBtn.addEventListener('click', async () => {
     renderGallery(images.hits);
     showLoader();
     if (perPage * pageCounter >= totalHits) {
+      iziToast.success({
+        title: 'Success',
+        color: 'green',
+        message: `We're sorry, but you've reached the end of search results.`,
+        position: 'topRight',
+      });
       hideLoadMoreBtn();
-      showEndOfCollectionMessage();
-    }
+      // showEndOfCollectionMessage();
+    } else {showLoadMoreBtn()}
 
     const galleryCardHeight =
       galleryElement.firstElementChild.getBoundingClientRect().height;
