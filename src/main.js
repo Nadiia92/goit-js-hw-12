@@ -70,7 +70,7 @@ async function submitHandle(event) {
       showEndOfCollectionMessage();
     }
   } catch (error) {
-    console.error('Error fetching images:', error);
+    // console.error('Error fetching images:', error);
     iziToast.error({
       title: 'Error',
       message: 'Failed to fetch images. Please try again later.',
@@ -100,7 +100,7 @@ loadMoreBtn.addEventListener('click', async () => {
       galleryElement.firstElementChild.getBoundingClientRect().height;
     window.scrollBy({ top: galleryCardHeight * 3, behavior: 'smooth' });
   } catch (error) {
-    console.error('Error fetching more images:', error);
+    // console.error('Error fetching more images:', error);
     iziToast.error({
       title: 'Error',
       message: `Error fetching more images: ${error}`,
